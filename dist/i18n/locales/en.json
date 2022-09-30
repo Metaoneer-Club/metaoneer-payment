@@ -1,0 +1,12 @@
+{
+  "payment": "Payment",
+  "orderName": "Order name",
+  "totalPrice": "Total price",
+  "loading": "Loading...",
+  "paymentProgress": "Payment in progress...",
+  "paymentError": "Invalid API key or network error.",
+  "paymentCancel": "Th payment has been canceled.",
+  "paymentDone": "The payment has been completed.",
+  "paymentAmount": "Payment amount",
+  "close": "Close"
+}

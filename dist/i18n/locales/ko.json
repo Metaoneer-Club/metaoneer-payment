@@ -1,0 +1,12 @@
+{
+  "payment": "결제하기",
+  "orderName": "주문명",
+  "totalPrice": "총 주문금액",
+  "loading": "로딩중 입니다...",
+  "paymentProgress": "결제중 입니다...",
+  "paymentError": "잘못된 API 키 혹은 네트워크 에러입니다.",
+  "paymentCancel": "결제가 취소되었습니다.",
+  "paymentDone": "결제가 완료되었습니다.",
+  "paymentAmount": "결제금액",
+  "close": "닫기"
+}
