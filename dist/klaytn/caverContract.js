@@ -108,7 +108,11 @@ var abi = [{
   type: "function"
 }, {
   constant: true,
-  inputs: [],
+  inputs: [{
+    internalType: "address",
+    name: "myAddress",
+    type: "address"
+  }],
   name: "myKeyLength",
   outputs: [{
     internalType: "uint256",
@@ -120,7 +124,11 @@ var abi = [{
   type: "function"
 }, {
   constant: true,
-  inputs: [],
+  inputs: [{
+    internalType: "address",
+    name: "myAddress",
+    type: "address"
+  }],
   name: "myKeyList",
   outputs: [{
     internalType: "bytes32[]",
@@ -271,6 +279,6 @@ var abi = [{
   stateMutability: "nonpayable",
   type: "function"
 }];
-var caverContract = new _caver["default"].klay.Contract(abi, "0x6a46e3306b5E51965f175E6E15B5cc7D17bA82F5");
+var caverContract = new _caver["default"].klay.Contract(abi, "0x7a95878dae2c80CF23A7c64Ae2aED67b04e71002");
 var _default = caverContract;
 exports["default"] = _default;
