@@ -310,7 +310,7 @@ var Payments = function Payments(_ref) {
               return _context5.abrupt("return");
 
             case 5:
-              if (!(paymentInfo.count < buyCount)) {
+              if (!(paymentInfo.limit === 1 && paymentInfo.count < buyCount)) {
                 _context5.next = 9;
                 break;
               }

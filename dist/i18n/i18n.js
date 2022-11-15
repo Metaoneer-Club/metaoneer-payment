@@ -29,7 +29,7 @@ _i18next.default.use(_reactI18next.initReactI18next).init({
     en: ["en"],
     default: ["ko"]
   },
-  debug: true,
+  debug: false,
   keySeparator: false,
   interpolation: {
     escapeValue: false

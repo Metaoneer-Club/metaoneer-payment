@@ -274,7 +274,11 @@ var paymentABI = [{
   stateMutability: "view",
   type: "function"
 }];
-var CONTRACT_ADDRESS = _web.WALLET_NETWORK === "56" ? "0xB535450F3Ca1a711931594Dcfca075B918D996AC" : "0xB535450F3Ca1a711931594Dcfca075B918D996AC";
+var paymentContract, CONTRACT_ADDRESS;
 exports.CONTRACT_ADDRESS = CONTRACT_ADDRESS;
-var paymentContract = new _web.web3.eth.Contract(paymentABI, CONTRACT_ADDRESS);
 exports.paymentContract = paymentContract;
+
+if (typeof window !== "undefined") {
+  exports.CONTRACT_ADDRESS = CONTRACT_ADDRESS = _web.WALLET_NETWORK === "56" ? "0xB535450F3Ca1a711931594Dcfca075B918D996AC" : "0xB535450F3Ca1a711931594Dcfca075B918D996AC";
+  exports.paymentContract = paymentContract = new _web.web3.eth.Contract(paymentABI, CONTRACT_ADDRESS);
+}
