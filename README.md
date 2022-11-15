@@ -90,32 +90,38 @@ npm start
 ```
 
 ```tsx
-import React, { useState } from 'react';
-import Payments from 'metaoneer-payment';
+import React, { useState } from "react";
+import Payments from "metaoneer-payment";
 
-const TOKEN_ID = 'Your NFT_TOKEN_ID';
-const BUY_COUNT = 'The amount you want';
-const config = { // Your Config (option)
-  icon: "https://... or ./public/test.png" // Size - 40 * 40
-  project: "Your Project Name"
+const TOKEN_ID = "Your NFT_TOKEN_ID"; // number
+const BUY_COUNT = "The amount you want"; // number
+const config = {
+  // Your Config (option)
+  icon: "https://... or ./public/test.png", // Size - 40 * 40 px
+  project: "Your Project Name",
 };
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const openHandler = () => {
-  setIsOpen(true);
+    setIsOpen(true);
   };
 
   const closeHandler = () => {
-  setIsOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <div>
       <button onClick={openHandler}>Open Payment</button>
       {isOpen && (
-        <Payments tokenId={TOKEN_ID} config={config} close={closeHandler} />
+        <Payments
+          tokenId={TOKEN_ID}
+          buyCount={BUY_COUNT}
+          config={config}
+          close={closeHandler}
+        />
       )}
     </div>
   );
@@ -124,7 +130,6 @@ function App() {
 export default App;
 
 // src/App.js
-
 ```
 
 Happy hacking! http://localhost:3000/
