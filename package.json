@@ -3,11 +3,11 @@
   "description": "Metaoneer Payment for Binance",
   "keywords": [
     "blockchain",
-    "klaytn",
+    "binance",
     "payment",
     "metaoneer"
   ],
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "dist/index.js",
   "files": [
     "dist",
