@@ -1,13 +1,13 @@
 {
   "name": "metaoneer-payment",
-  "description": "Metaoneer Payment for Klaytn",
+  "description": "Metaoneer Payment for Binance",
   "keywords": [
     "blockchain",
     "klaytn",
     "payment",
     "metaoneer"
   ],
-  "version": "0.1.1",
+  "version": "0.2.1",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -20,7 +20,7 @@
   },
   "author": {
     "name": "Metaoneer",
-    "email": "cs@metaoneer.club"
+    "email": "contact@metaoneer.club"
   },
   "bugs": {
     "web": "https://github.com/Metaoneer-Club/metaoneer-payment/issues"
@@ -30,7 +30,6 @@
     "react": ">=18"
   },
   "dependencies": {
-    "caver-js": "^1.9.0",
     "i18next": "^21.9.2",
     "react-i18next": "^11.18.6",
     "styled-components": "^5.3.5",
@@ -53,11 +52,5 @@
   },
   "scripts": {
     "build": "babel --extensions .ts,.tsx ./lib -d ./dist && tsc"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   }
 }

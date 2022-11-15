@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _web = _interopRequireDefault(require("./web3"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var abi = [{
   inputs: [],
@@ -108,11 +108,7 @@ var abi = [{
   type: "function"
 }, {
   constant: true,
-  inputs: [{
-    internalType: "address",
-    name: "myAddress",
-    type: "address"
-  }],
+  inputs: [],
   name: "myKeyLength",
   outputs: [{
     internalType: "uint256",
@@ -124,11 +120,7 @@ var abi = [{
   type: "function"
 }, {
   constant: true,
-  inputs: [{
-    internalType: "address",
-    name: "myAddress",
-    type: "address"
-  }],
+  inputs: [],
   name: "myKeyList",
   outputs: [{
     internalType: "bytes32[]",
@@ -279,6 +271,6 @@ var abi = [{
   stateMutability: "nonpayable",
   type: "function"
 }];
-var web3Contract = new _web["default"].eth.Contract(abi, "0x7a95878dae2c80CF23A7c64Ae2aED67b04e71002");
+var web3Contract = new _web.default.eth.Contract(abi, "0x6a46e3306b5E51965f175E6E15B5cc7D17bA82F5");
 var _default = web3Contract;
-exports["default"] = _default;
+exports.default = _default;

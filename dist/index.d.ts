@@ -1,12 +1,7 @@
 import { FC, MouseEventHandler } from "react";
-declare global {
-    interface Window {
-        ethereum: any;
-        klaytn: any;
-    }
-}
 export interface IPayment {
-    apiKey: string;
+    tokenId: number;
+    buyCount: number;
     config?: {
         logo?: string;
         project?: string;

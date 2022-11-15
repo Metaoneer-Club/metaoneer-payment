@@ -1,59 +1,121 @@
 # Metaoneer Payment
 
-This is a module that supports payment on the Klaytn network
+This is a module that supports payment on the Binance Smart Chain network.
 
-- Chain Id : 8217, 1001
-- Supported Wallet : Metamask, Kaikas
-- React + TypeScript + Styled-Components
+- Supported Chain : 56(BnB Mainnet), 97(BnB Testnet)
+- Supported Wallet : Metamask
+
+Written in React + TypeScript + Styled-Components.
+
+```
+Mainnet CA : Comming Soon!
+Testnet CA : 0xB535450F3Ca1a711931594Dcfca075B918D996AC
+```
 
 ## Installation
-
----
 
 ```
 npm install metaoneer-payment
 ```
 
-## Quick Start
+## How to Register the Product?
 
----
+1. Move to [Service Page (Temp)](http://nfps.metaoneer.club.s3-website.ap-northeast-2.amazonaws.com/) and `To Create`!
+
+2. Use `web3` and `sendTransaction` like this.
+
+```ts
+import Web3 from "web3";
+
+interface Params {
+  _title: string;
+  _price: number;
+  _count: number; // limit === 1 ? number | 1
+  _limit: 0 | 1;
+}
+
+const web3 = new Web3(window.ethereum);
+const web3Contract: any = new web3.eth.Contract(
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_title",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "_price",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_count",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_limit",
+        type: "uint256",
+      },
+    ],
+    name: "prepareKeyRegister",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "payable",
+    type: "function",
+  },
+  CONTRACT_ADDRESS
+);
+
+await web3Contract.methods
+  .preapreKeyRegister(_title, _price, _count, _limit)
+  .send();
+
+// example.ts
+```
+
+## Quick Start
 
 ```
 npx create-react-app my-app
 cd my-app
 npm install metaoneer-payment
+npm start
 ```
 
-```js
-import React, { useState } from "react";
-import Payments from "metaoneer-payment";
+```tsx
+import React, { useState } from 'react';
+import Payments from 'metaoneer-payment';
 
-const API_KEY = "Your API_KEY";
-// const config = { // Your Config (option)
-//   icon: "https://... or ./public/test.png"
-//   project: "Your Project"
-// };
+const TOKEN_ID = 'Your NFT_TOKEN_ID';
+const BUY_COUNT = 'The amount you want';
+const config = { // Your Config (option)
+  icon: "https://... or ./public/test.png" // Size - 40 * 40
+  project: "Your Project Name"
+};
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   const openHandler = () => {
-    setIsOpen(true);
+  setIsOpen(true);
   };
 
   const closeHandler = () => {
-    setIsOpen(false);
+  setIsOpen(false);
   };
 
   return (
     <div>
       <button onClick={openHandler}>Open Payment</button>
       {isOpen && (
-        <Payments
-          apiKey={API_KEY}
-          // config={config}
-          close={closeHandler}
-        />
+        <Payments tokenId={TOKEN_ID} config={config} close={closeHandler} />
       )}
     </div>
   );
@@ -62,98 +124,7 @@ function App() {
 export default App;
 
 // src/App.js
-```
 
-```
-
-npm start
-
-```
-
-## Known issues
-
----
-
-- Using webpack >= 5
-
-Node.js module polyfills are not provided by default in webpack v5 and later. Therefore, you need to install the missing modules and add them to the resolve.fallback property of the `webpack.config.js` file in the form below.
-
-```
-npm install -D react-app-rewired url buffer stream-browserify os-browserify https-browserify crypto-browserify
-```
-
-```js
-  "scripts": {
-    "start": "set \"GENERATE_SOURCEMAP=false\" && react-app-rewired start",
-    "build": "set \"GENERATE_SOURCEMAP=false\" && react-app-rewired build",
-  },
-
-// package.json ( Window )
-```
-
-```js
-  "scripts": {
-    "start": "GENERATE_SOURCEMAP=false && react-app-rewired start",
-    "build": "GENERATE_SOURCEMAP=false && react-app-rewired build",
-  },
-
-// package.json ( Mac )
-```
-
-```js
-const webpack = require("webpack");
-
-module.exports = {
-  webpack: function (config, env) {
-    const overridedConfig = {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        fallback: {
-          ...config.resolve.fallback,
-          fs: false,
-          net: false,
-          stream: require.resolve("stream-browserify"),
-          crypto: require.resolve("crypto-browserify"),
-          http: require.resolve("stream-http"),
-          https: require.resolve("https-browserify"),
-          os: require.resolve("os-browserify/browser"),
-          url: require.resolve("url"),
-          buffer: require.resolve("buffer"),
-        },
-        alias: {
-          ...config.resolve.alias,
-          buffer: "buffer",
-          stream: "stream-browserify",
-        },
-      },
-      plugins: [
-        ...config.plugins,
-        new webpack.ProvidePlugin({
-          process: "process/browser",
-          Buffer: ["buffer", "Buffer"],
-        }),
-      ],
-    };
-    return overridedConfig;
-  },
-};
-
-// config-overrides.js
-```
-
-- Buffer Error
-
-Node.js buffer errors may occur. Please add the code as below.
-
-```
-ReferenceError : Buffer is not defined
-```
-
-```js
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
-// Your Code
 ```
 
 Happy hacking! http://localhost:3000/

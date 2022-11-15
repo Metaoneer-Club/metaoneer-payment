@@ -1,13 +1,10 @@
 import { FC, MouseEventHandler } from "react";
 interface IProps {
-    currentWallet: string | null;
-    mAccount: string | null;
-    kAccount: string | null;
+    account: string | null;
     orderName: string;
-    orderDescription: string;
     price: number;
+    isConnecting: boolean;
     connectMetamask: MouseEventHandler<HTMLButtonElement>;
-    connectKaikas: MouseEventHandler<HTMLButtonElement>;
 }
 declare const Pay: FC<IProps>;
 export default Pay;

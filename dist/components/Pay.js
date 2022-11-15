@@ -3,51 +3,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _svg = require("../assets/svg");
-
 var _reactI18next = require("react-i18next");
+
+var _assets = require("../assets");
+
+var _utils = require("../utils");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// i18n
+/* Component */
 var Pay = function Pay(_ref) {
-  var currentWallet = _ref.currentWallet,
-      mAccount = _ref.mAccount,
-      kAccount = _ref.kAccount,
+  var account = _ref.account,
       orderName = _ref.orderName,
-      orderDescription = _ref.orderDescription,
       price = _ref.price,
-      connectMetamask = _ref.connectMetamask,
-      connectKaikas = _ref.connectKaikas;
+      isConnecting = _ref.isConnecting,
+      connectMetamask = _ref.connectMetamask;
 
   var _useTranslation = (0, _reactI18next.useTranslation)(),
       t = _useTranslation.t;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("main", {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "p-wallet-wrapper",
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("figure", {
-        className: "p-wallet-item ".concat(currentWallet === "Metamask" && "p-selected"),
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("figure", {
+        className: "p-wallet-item ".concat(account && "p-selected"),
         onClick: connectMetamask,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_svg.MetamaskLogo, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("figcaption", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_assets.MetamaskLogo, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("figcaption", {
           className: "p-wallet-item-info",
-          children: currentWallet === "Metamask" && (mAccount === null || mAccount === void 0 ? void 0 : mAccount.replace(mAccount.substring(6, 36), "...")) || "Metamask"
+          children: isConnecting ? "Connecting..." : account && (0, _utils.shortAddress)(account) || "Metamask"
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("figure", {
-        className: "p-wallet-item ".concat(currentWallet === "Kaikas" && "p-selected"),
-        onClick: connectKaikas,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_svg.KaikasLogo, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("figcaption", {
-          className: "p-wallet-item-info",
-          children: currentWallet === "Kaikas" && (kAccount === null || kAccount === void 0 ? void 0 : kAccount.replace(kAccount.substring(6, 36), "...")) || "Kaikas"
-        })]
-      })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("hr", {}), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "p-info-wrapper",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: "p-order",
@@ -58,9 +50,12 @@ var Pay = function Pay(_ref) {
           className: "p-order-name",
           children: orderName
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: "p-contents",
-        children: orderDescription
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          className: "p-contents-header",
+          children: "Message :"
+        }), t("paymentWarning")]
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: "p-info",
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
@@ -69,10 +64,10 @@ var Pay = function Pay(_ref) {
           className: "p-charge",
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("strong", {
             className: "p-charge-price",
-            children: price
+            children: price > 0.00000001 ? price : "> 0.00000001"
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             className: "p-charge-currency",
-            children: "klay"
+            children: "BNB"
           })]
         })]
       })]
@@ -81,4 +76,4 @@ var Pay = function Pay(_ref) {
 };
 
 var _default = Pay;
-exports["default"] = _default;
+exports.default = _default;
